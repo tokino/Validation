@@ -1,0 +1,12 @@
+machine:
+  timezone: Asia/Tokyo
+  php:
+    version: 7.0.4
+dependencies:
+  pre:
+    - sed -i 's/^error_reporting = E_ALL/error_reporting = E_ALL \^ E_DEPRECATED/' /opt/circleci/php/$(phpenv global)/etc/php.ini
+  override:
+    - composer install
+test:
+  override:
+    - vendor/bin/phpunit
