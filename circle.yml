@@ -3,8 +3,6 @@ machine:
   php:
     version: 7.0.4
 dependencies:
-  pre:
-    - sed -i 's/^error_reporting = E_ALL/error_reporting = E_ALL \^ E_DEPRECATED/' /opt/circleci/php/$(phpenv global)/etc/php.ini
   override:
     - composer install
 test:
@@ -19,5 +17,8 @@ test:
     - php -v
     - vendor/bin/phpunit
     - phpenv global 5.6.14
+    - php -v
+    - vendor/bin/phpunit
+    - phpenv global 7.0.4
     - php -v
     - vendor/bin/phpunit
