@@ -9,4 +9,6 @@ dependencies:
     - composer install
 test:
   override:
+    - phpenv global 5.3.3
+    - php -v
     - vendor/bin/phpunit
