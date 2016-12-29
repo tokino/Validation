@@ -2,7 +2,7 @@
     "require": {
     },
     "require-dev": {
-        "phpunit/phpunit": "*"
+        "phpunit/phpunit": "4.*"
     },
     "autoload": {
         "psr-4": {
