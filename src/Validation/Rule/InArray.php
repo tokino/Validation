@@ -36,10 +36,6 @@ class InArray extends AbstractRule
      */
     protected function check($value)
     {
-        if (!is_array($this->haystack)) {
-            return false;
-        }
-
         if (!$this->options['required'] && empty($this->haystack)) {
             return true;
         }

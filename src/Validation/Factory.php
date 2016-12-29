@@ -34,12 +34,12 @@ class Factory
 
             $reflectionClass = new ReflectionClass($className);
             if (!$reflectionClass->isSubclassOf('Tokino\\Validation\\Rule\\AbstractRule')) {
-                throw new \Exception('invalid rules line: ' . __LINE__);
+                throw new \Exception('Invalid rules line: ' . __LINE__);
             }
 
             return $reflectionClass->newInstanceArgs($args);
         }
 
-        throw new \Exception('invalid rules');
+        throw new \Exception('Invalid rules');
     }
 }

@@ -35,21 +35,28 @@ class ValidatorTest extends PHPUnit_Framework_TestCase
         $this->assertFalse(Validator::validate());
     }
 
-    public function testGetErrors() {
-        $errors = Validator::getErrors();
-        $this->assertEquals('', $errors->render(0));
+    public function testGetException() {
+        try {
+            Validator::Ipv4();
+        } catch(Exception $e) {
+            $this->assertEquals('Invalid rules', $e->getMessage());
+        }
     }
 
-    public function testValidateNestFailed() {
-        Validator::addRule(Validator::inArray(2, array(0, 1), false, array(
+    public function testNastedValidateFailed() {
+        Validator::addRule(Validator::inArray(array('test' => 2), array(0, 1), false, array(
             'name' => 'test',
-            'message' => 'test error'
+            'message' => 'test',
         )));
         $this->assertFalse(Validator::validate());
+        $this->assertEquals('test', Validator::getErrors()->render('test'));
     }
 
-    public function testGetNestErrors() {
-        $errors = Validator::getErrors();
-        $this->assertEquals('test error', $errors->render('test'));
+    public function testNastedArrayFailed() {
+        Validator::addRule(Validator::inArray(array('test' => 2), array(0, 1), false, array(
+            'name' => 'test2',
+            'message' => 'test',
+        )));
+        $this->assertFalse(Validator::validate());
     }
 }

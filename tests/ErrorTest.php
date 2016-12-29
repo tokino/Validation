@@ -16,6 +16,11 @@ class ErrorTest extends PHPUnit_Framework_TestCase
         return array(array(new Error(array('test'))));
     }
 
+    public function testSetError() {
+        $errors = new Error(array('test'));
+        $this->assertEquals('test', $errors->render(0));
+    }
+
     /**
      * @dataProvider errorProvider
      * @param Error $error
