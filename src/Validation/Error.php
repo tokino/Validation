@@ -31,7 +31,7 @@ class Error
     }
 
     public function hasError() {
-        return count($this->errors);
+        return (bool)count($this->errors);
     }
 
     public function getErrors() {
